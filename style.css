@@ -49,6 +49,17 @@ header {
         font-size: 0.75rem;
         font-weight: var(--font-weight-light);
         letter-spacing: var(--letter-spacing);
+
+        display: flex;
+        gap: 0.2rem;
+
+        &::after {
+            content: "]";
+        }
+
+        &::before {
+            content: "[";
+        }
     }
 
     &::after {
@@ -60,7 +71,7 @@ header {
     }
 }
 
-.accent {
+/* .accent {
     display: flex;
     gap: 0.2rem;
 
@@ -71,42 +82,56 @@ header {
     &::before {
         content: "[";
     }
-}
+} */
 
 .hero {
-    padding-inline: 1rem;
+    .header {
+        padding: 1rem;
+        border-bottom: 1px solid var(--black);
 
-    h3 {
-        display: flex;
-        flex-direction: column;
-        -moz-row-gap: 4.5rem;
-        row-gap: 4.5rem;
-        text-transform: uppercase;
-        font-weight: var(--font-weight-medium);
-        letter-spacing: var(--letter-spacing);
-        font-size: clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
-
-        &::before {
-            content: "[ Made by Lois Floro ]";
+        .author {
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing);
             font-size: 0.75rem;
             font-weight: var(--font-weight-light);
+            display: flex;
             align-self: flex-end;
+            justify-content: flex-end;
+            gap: 0.2rem;
+
+            &::after {
+                content: "]";
+            }
+
+            &::before {
+                content: "[";
+            }
         }
-    }
 
-    a.view-all-design {
-        all: unset;
-        cursor: pointer;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        font-weight: var(--font-weight-medium);
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 0.25rem;
+        h3 {
+            text-transform: uppercase;
+            font-weight: var(--font-weight-medium);
+            letter-spacing: var(--letter-spacing);
+            font-size: clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
+            max-width: 95%;
+            margin-top: 4.5rem;
+            margin-bottom: 3rem;
+        }
 
-        &::after {
-            content: url("./img/arrow-up-right.svg");
+        a.view-all-design {
+            all: unset;
+            cursor: pointer;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: var(--font-weight-medium);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.25rem;
+
+            &::after {
+                content: url("./img/arrow-up-right.svg");
+            }
         }
     }
 }
