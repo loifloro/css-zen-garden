@@ -46,18 +46,67 @@ header {
     }
 
     h2 {
-        display: flex;
-        gap: 0.2rem;
         font-size: 0.75rem;
         font-weight: var(--font-weight-light);
         letter-spacing: var(--letter-spacing);
+    }
 
-        &::after {
-            content: "]";
-        }
+    &::after {
+        content: url("./img/logo.svg");
+        align-self: flex-end;
+        position: absolute;
+        top: 0;
+        padding-top: inherit;
+    }
+}
+
+.accent {
+    display: flex;
+    gap: 0.2rem;
+
+    &::after {
+        content: "]";
+    }
+
+    &::before {
+        content: "[";
+    }
+}
+
+.summary {
+    padding-inline: 1rem;
+
+    h3 {
+        display: flex;
+        flex-direction: column;
+        -moz-row-gap: 4.5rem;
+        row-gap: 4.5rem;
+        text-transform: uppercase;
+        font-weight: var(--font-weight-medium);
+        letter-spacing: var(--letter-spacing);
+        font-size: clamp(2rem, 1.2958rem + 3.0047vw, 4rem);
 
         &::before {
-            content: "[";
+            content: "[ Made by Lois Floro ]";
+            font-size: 0.75rem;
+            font-weight: var(--font-weight-light);
+            align-self: flex-end;
+        }
+    }
+
+    a.view-all-design {
+        all: unset;
+        cursor: pointer;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        font-weight: var(--font-weight-medium);
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.25rem;
+
+        &::after {
+            content: url("./img/arrow-up-right.svg");
         }
     }
 }
