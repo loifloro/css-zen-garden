@@ -13,6 +13,9 @@
     --letter-spacing: -0.05em;
     --font-weight-medium: 500;
     --font-weight-light: 300;
+    --text-small: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
+    --text-md: : clamp(1rem, 0.956rem + 0.1878vw, 1.125rem);
+    --line-height-sm: 20px;
 
     --black: #3b3b3b;
 }
@@ -26,6 +29,11 @@ body {
     font-family: "JetBrains Mono", monospace;
     margin: 0;
     padding: 0;
+}
+
+a {
+    all: unset;
+    cursor: pointer;
 }
 
 header {
@@ -71,19 +79,6 @@ header {
     }
 }
 
-/* .accent {
-    display: flex;
-    gap: 0.2rem;
-
-    &::after {
-        content: "]";
-    }
-
-    &::before {
-        content: "[";
-    }
-} */
-
 .hero {
     .header {
         padding: 1rem;
@@ -119,7 +114,6 @@ header {
         }
 
         a.view-all-design {
-            all: unset;
             cursor: pointer;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -133,6 +127,71 @@ header {
                 content: url("./img/arrow-up-right.svg");
             }
         }
+    }
+}
+
+.summary {
+    min-height: 100vh;
+    background-image: url("img/summary-bg.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-inline: 1rem;
+    padding-top: 2rem;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-light);
+    font-size: var(--text-small);
+    letter-spacing: var(--letter-spacing);
+    line-height: var(--line-height-sm);
+
+    a {
+        text-decoration: underline;
+    }
+}
+
+.preamble {
+    div:first-child {
+        div {
+            margin-top: 40vh;
+            display: flex;
+            flex-direction: column;
+
+            h3,
+            p {
+                padding-inline: 1rem;
+            }
+
+            h3 {
+                font-size: var(--text-md);
+                text-transform: uppercase;
+                font-weight: var(--font-weight-medium);
+                letter-spacing: var(--letter-spacing);
+                display: flex;
+                gap: 0.2rem;
+
+                &::after {
+                    content: "]";
+                }
+
+                &::before {
+                    content: "[";
+                }
+            }
+
+            p {
+                text-transform: uppercase;
+                font-weight: var(--font-weight-light);
+                font-size: var(--text-small);
+                letter-spacing: var(--letter-spacing);
+                line-height: var(--line-height-sm);
+            }
+
+            &::after {
+                content: url("img/preamble-accent.svg");
+                margin-top: 2.5rem;
+            }
+        }
+
+
     }
 }
 
