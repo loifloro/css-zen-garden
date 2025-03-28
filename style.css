@@ -12,6 +12,7 @@
 :root {
     --letter-spacing: -0.05em;
     --font-weight-medium: 500;
+    --font-weight-regular: 400;
     --font-weight-light: 300;
     --text-small: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
     --text-md: : clamp(1rem, 0.956rem + 0.1878vw, 1.125rem);
@@ -29,6 +30,32 @@ body {
     font-family: "JetBrains Mono", monospace;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+}
+
+h3 {
+    font-size: var(--text-md);
+    text-transform: uppercase;
+    font-weight: var(--font-weight-regular);
+    letter-spacing: var(--letter-spacing);
+    display: flex;
+    gap: 0.2rem;
+
+    &::after {
+        content: "]";
+    }
+
+    &::before {
+        content: "[";
+    }
+}
+
+p {
+    text-transform: uppercase;
+    font-weight: var(--font-weight-light);
+    font-size: var(--text-small);
+    letter-spacing: var(--letter-spacing);
+    line-height: var(--line-height-sm);
 }
 
 a {
@@ -43,7 +70,7 @@ header {
     border-bottom: 1px solid var(--black);
 
     h1,
-    h2 {
+    span {
         margin-block: unset;
     }
 
@@ -53,7 +80,7 @@ header {
         letter-spacing: var(--letter-spacing);
     }
 
-    h2 {
+    span {
         font-size: 0.75rem;
         font-weight: var(--font-weight-light);
         letter-spacing: var(--letter-spacing);
@@ -103,7 +130,7 @@ header {
             }
         }
 
-        h3 {
+        h2 {
             text-transform: uppercase;
             font-weight: var(--font-weight-medium);
             letter-spacing: var(--letter-spacing);
@@ -150,6 +177,8 @@ header {
 
 .preamble {
     div:first-child {
+        margin-bottom: 6.25rem;
+
         div {
             margin-top: 40vh;
             display: flex;
@@ -160,31 +189,6 @@ header {
                 padding-inline: 1rem;
             }
 
-            h3 {
-                font-size: var(--text-md);
-                text-transform: uppercase;
-                font-weight: var(--font-weight-medium);
-                letter-spacing: var(--letter-spacing);
-                display: flex;
-                gap: 0.2rem;
-
-                &::after {
-                    content: "]";
-                }
-
-                &::before {
-                    content: "[";
-                }
-            }
-
-            p {
-                text-transform: uppercase;
-                font-weight: var(--font-weight-light);
-                font-size: var(--text-small);
-                letter-spacing: var(--letter-spacing);
-                line-height: var(--line-height-sm);
-            }
-
             &::after {
                 content: url("img/preamble-accent.svg");
                 margin-top: 2.5rem;
@@ -193,6 +197,53 @@ header {
 
 
     }
+
+    &> :nth-last-child(-n + 1) {
+        padding-top: 3rem;
+        padding-bottom: 1rem;
+
+        min-height: -webkit-fit-content;
+        min-height: -moz-fit-content;
+        min-height: fit-content;
+        background-image: url("img/one-with-the-web-bg.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        h3,
+        p {
+            padding-inline: 1rem;
+        }
+
+        &::after {
+            content: url("img/one-with-the-web-accent.svg");
+            margin-top: 5rem;
+            display: block;
+            height: auto;
+        }
+    }
+}
+
+.explanation {
+    min-height: 100vh;
+    margin-block: 5rem;
+    padding: 1rem;
+
+    h3 {
+        margin-bottom: 3.75rem;
+    }
+
+    p {
+
+        &:first-child {
+            color: red;
+
+            &::after {
+                content: "[ Become one with the web ]";
+            }
+        }
+    }
+
+
 }
 
 /* basic elements */
