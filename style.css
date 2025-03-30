@@ -19,21 +19,21 @@
     --text-small: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
     --text-md: : clamp(1rem, 0.956rem + 0.1878vw, 1.125rem);
     --line-height-sm: 20px;
-
-    --black: #3b3b3b;
+    --theme-border: 1px #A2A2A2 solid;
+    --black: #3b3b3b
 }
 
 
 html {
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 
 body {
     font-family: "JetBrains Mono", monospace;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
 }
 
 h3 {
@@ -158,12 +158,82 @@ header {
             }
         }
     }
+
+    .accent {
+        margin-top: 1rem;
+        display: grid;
+        overflow: hidden;
+
+        /* grid-template-columns: repeat(4, 1fr); */
+
+        .total-designs {
+            background-image: url("img/total-designs-bg.svg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+
+        .total-designs {
+            display: flex;
+            flex-direction: column;
+            row-gap: 1rem;
+            justify-content: center;
+            text-transform: uppercase;
+            min-height: 460px;
+
+            span {
+                text-align: center;
+            }
+
+            span:first-of-type {
+                font-size: 8rem;
+                font-weight: var(--font-weight-light);
+                letter-spacing: var(--letter-spacing-sm);
+                line-height: 1;
+            }
+
+            span:last-of-type {
+                font-weight: var(--font-weight-light);
+            }
+        }
+
+        .accent-image::after {
+            content: url("img/accent-img.svg");
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .latest-css {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-block: 6.25rem;
+
+            h3 {
+                margin-bottom: 2.5rem;
+            }
+
+            ul {
+                -webkit-padding-start: unset;
+                padding-inline-start: unset;
+
+                li {
+                    list-style-type: none;
+                    font-weight: var(--font-weight-light);
+                    letter-spacing: var(--letter-spacing-md);
+                    text-transform: uppercase;
+                    margin-bottom: 1.2rem;
+                    font-size: var(--text-small);
+                }
+            }
+        }
+    }
 }
 
 .summary {
     min-height: 100vh;
     background-image: url("img/summary-bg.svg");
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
     padding-inline: 1rem;
     padding-top: 2rem;
@@ -195,6 +265,7 @@ header {
             &::after {
                 content: url("img/preamble-accent.svg");
                 margin-top: 2.5rem;
+                overflow: hidden;
             }
         }
 
@@ -209,7 +280,7 @@ header {
         min-height: -moz-fit-content;
         min-height: fit-content;
         background-image: url("img/one-with-the-web-bg.svg");
-        background-size: cover;
+        background-size: 100%;
         background-repeat: no-repeat;
 
         h3,
@@ -222,6 +293,9 @@ header {
             margin-top: 5rem;
             display: block;
             height: auto;
+            width: 100%;
+            overflow: hidden;
+
         }
     }
 }
@@ -236,22 +310,79 @@ header {
     }
 
     p {
+        margin-bottom: 2.5rem;
 
-        &:first-child {
-            color: red;
-
+        &:first-of-type {
             &::after {
                 content: "[ Become one with the web ]";
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 5rem;
+            }
+        }
+
+        &:last-of-type {
+            &::after {
+                content: "[ Become one with the web ]";
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 5rem;
             }
         }
     }
 
+}
 
+.participation {
+    background-color: #E7E7E7;
+    padding-top: 6.25rem;
+
+    h3 {
+        padding-left: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        &:nth-of-type(1) {
+            background-image: url("img/participation-item-bg.svg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            color: white;
+            padding-inline: 1rem;
+            padding-top: 1.5rem;
+            min-height: 400px;
+        }
+
+        &:nth-of-type(2) {
+            padding: 1rem;
+            margin-bottom: 5rem;
+        }
+
+        &:nth-of-type(3) {
+            background-image: url("img/participation-item-bg.svg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            color: white;
+            padding-inline: 1rem;
+            padding-top: 1.5rem;
+            min-height: 400px;
+            padding: 1rem;
+        }
+    }
 }
 
 .benefits {
+    border-bottom: 1px solid var(--black);
     padding: 1rem;
 
+    p {
+        &::after {
+            content: "[ CSS Feature ]";
+            display: flex;
+            justify-content: flex-end;
+            margin-block: 6rem;
+        }
+    }
 }
 
 .requirements {
@@ -315,64 +446,106 @@ header {
     }
 }
 
-.design-selection {
-    background-image: url("img/design-selection-bg.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 1rem;
 
-    h3 {
-        display: flex;
-        justify-content: center;
-        margin-block: 8.75rem;
-        font-weight: var(--font-weight-regular);
-    }
 
-    ul {
-        -webkit-padding-start: unset;
-        padding-inline-start: unset;
+.sidebar {
+    .wrapper {
+        display: grid;
+        grid-template-areas:
+            "selection selection"
+            "resources archives";
+        row-gap: 3.75rem;
+        -moz-column-gap: 1.25rem;
+        column-gap: 1.25rem;
+        margin-bottom: 5rem;
 
-        li {
-            text-align: center;
-            margin-bottom: 5rem;
-            flex-direction: column;
-            list-style-type: none;
-            font-size: var(--text-small);
-            letter-spacing: var(--letter-spacing-md);
-            font-weight: 100;
+        ul {
+            -webkit-padding-start: unset;
+            padding-inline-start: unset;
 
-            .design-name {
-                display: block;
-                font-size: 2rem;
+            li {
+                list-style-type: none;
                 font-weight: var(--font-weight-light);
                 letter-spacing: var(--letter-spacing-md);
                 text-transform: uppercase;
+                margin-bottom: .6rem;
+                font-size: var(--text-small);
             }
+        }
 
-            .designer-name {
-                font-size: var(--text-md);
-                letter-spacing: var(--letter-spacing-md);
-                text-transform: uppercase;
-                font-weight: 100;
-                font-style: italic;
-                display: inline-flex;
+        .design-selection {
+            background-image: url("img/design-selection-bg.svg");
+            border: var(--theme-border);
+            background-size: cover;
+            background-repeat: no-repeat;
+            padding: 1rem;
+            grid-area: selection;
+
+            h3 {
+                display: flex;
                 justify-content: center;
+                margin-block: 8.75rem;
+                font-weight: var(--font-weight-regular);
+            }
 
-                &::before {
-                    content: "(";
-                }
+            ul {
+                -webkit-padding-start: unset;
+                padding-inline-start: unset;
 
-                &::after {
-                    content: ")";
+                li {
+                    text-align: center;
+                    margin-bottom: 5rem;
+                    flex-direction: column;
+                    list-style-type: none;
+                    font-size: var(--text-small);
+                    letter-spacing: var(--letter-spacing-md);
+                    font-weight: 100;
+
+                    .design-name {
+                        display: block;
+                        font-size: 2rem;
+                        font-weight: var(--font-weight-light);
+                        letter-spacing: var(--letter-spacing-md);
+                        text-transform: uppercase;
+                    }
+
+                    .designer-name {
+                        font-size: var(--text-md);
+                        letter-spacing: var(--letter-spacing-md);
+                        text-transform: uppercase;
+                        font-weight: 100;
+                        font-style: italic;
+                        display: inline-flex;
+                        justify-content: center;
+
+                        &::before {
+                            content: "(";
+                        }
+
+                        &::after {
+                            content: ")";
+                        }
+                    }
                 }
             }
+        }
+
+        .design-archives {
+            grid-area: archives;
+        }
+
+        .zen-resources {
+            grid-area: resources;
+            padding-left: 1rem;
         }
     }
 }
 
+
+
 footer {
     background-image: url("img/footer-mobile-bg.svg");
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
 
     display: flex;
@@ -394,188 +567,3 @@ footer {
         }
     }
 }
-
-/* basic elements */
-/* html {
-    margin: 0;
-    padding: 0;
-}
-body {
-    font: 75% georgia, sans-serif;
-    line-height: 1.88889;
-    color: #555753;
-    background: #fff url(http://csszengarden.com/001/blossoms.jpg) no-repeat bottom right;
-    margin: 0;
-    padding: 0;
-}
-p {
-    margin-top: 0;
-    text-align: justify;
-}
-h3 {
-    font: italic normal 1.4em georgia, sans-serif;
-    letter-spacing: 1px;
-    margin-bottom: 0;
-    color: #7d775c;
-}
-a:link {
-    font-weight: bold;
-    text-decoration: none;
-    color: #b7a5df;
-}
-a:visited {
-    font-weight: bold;
-    text-decoration: none;
-    color: #d4cddc;
-}
-a:hover,
-a:focus,
-a:active {
-    text-decoration: underline;
-    color: #9685ba;
-}
-abbr {
-    border-bottom: none;
-} */
-
-/* specific divs */
-/* .page-wrapper {
-    background: url(http://csszengarden.com/001/zen-bg.jpg) no-repeat top left;
-    padding: 0 175px 0 110px;
-    margin: 0;
-    position: relative;
-}
-
-.intro {
-    min-width: 470px;
-    width: 100%;
-}
-
-header h1 {
-    background: transparent url(http://csszengarden.com/001/h1.gif) no-repeat top left;
-    margin-top: 10px;
-    display: block;
-    width: 219px;
-    height: 87px;
-    float: left;
-
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-header h2 {
-    background: transparent url(http://csszengarden.com/001/h2.gif) no-repeat top left;
-    margin-top: 58px;
-    margin-bottom: 40px;
-    width: 200px;
-    height: 18px;
-    float: right;
-
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-header {
-    padding-top: 20px;
-    height: 87px;
-}
-
-.summary {
-    clear: both;
-    margin: 20px 20px 20px 10px;
-    width: 160px;
-    float: left;
-}
-.summary p {
-    font: italic 1.1em/2.2 georgia;
-    text-align: center;
-}
-
-.preamble {
-    clear: right;
-    padding: 0px 10px 0 10px;
-}
-.supporting {
-    padding-left: 10px;
-    margin-bottom: 40px;
-}
-
-footer {
-    text-align: center;
-}
-footer a:link,
-footer a:visited {
-    margin-right: 20px;
-}
-
-.sidebar {
-    margin-left: 600px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-.sidebar .wrapper {
-    font: 10px verdana, sans-serif;
-    background: transparent url(http://csszengarden.com/001/paper-bg.jpg) top left repeat-y;
-    padding: 10px;
-    margin-top: 150px;
-    width: 130px;
-}
-.sidebar h3.select {
-    background: transparent url(http://csszengarden.com/001/h3.gif) no-repeat top left;
-    margin: 10px 0 5px 0;
-    width: 97px;
-    height: 16px;
-
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.sidebar h3.archives {
-    background: transparent url(http://csszengarden.com/001/h5.gif) no-repeat top left;
-    margin: 25px 0 5px 0;
-    width: 57px;
-    height: 14px;
-
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-.sidebar h3.resources {
-    background: transparent url(http://csszengarden.com/001/h6.gif) no-repeat top left;
-    margin: 25px 0 5px 0;
-    width: 63px;
-    height: 10px;
-
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.sidebar ul {
-    margin: 0;
-    padding: 0;
-}
-.sidebar li {
-    line-height: 1.3em;
-    background: transparent url(http://csszengarden.com/001/cr1.gif) no-repeat top center;
-    display: block;
-    padding-top: 5px;
-    margin-bottom: 5px;
-    list-style-type: none;
-}
-.sidebar li a:link {
-    color: #988f5e;
-}
-.sidebar li a:visited {
-    color: #b3ae94;
-}
-
-.extra1 {
-    background: transparent url(http://csszengarden.com/001/cr2.gif) top left no-repeat;
-    position: absolute;
-    top: 40px;
-    right: 0;
-    width: 148px;
-    height: 110px;
-} */
